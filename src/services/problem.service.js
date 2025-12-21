@@ -46,6 +46,15 @@ class ProblemService{
             throw error
         }
     }
+
+    async updateProblem(id,problemData){
+        try {
+            const problem = await this.problemRepository.updateProblem(id,problemData);
+            return problem;
+        } catch (error) {
+            
+        }
+    }
 }
 
 module.exports = ProblemService

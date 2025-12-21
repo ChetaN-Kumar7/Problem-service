@@ -49,7 +49,19 @@ class problemRepository{
             throw error
         }
         
+    }
 
+    async updateProblem(id,problemData){
+        try {
+            const problem = await Problem.findByIdAndUpdate(id,problemData);
+            if(!problem){
+                throw new NotFound("Problem",id)
+            }
+            return problem;
+        } catch (error) {
+            throw error
+        }
+        
     }
 
 }
