@@ -1,3 +1,5 @@
+const { deleteProblem } = require('../controllers/problem.controller');
+const NotFound = require('../errors/notfound.error');
 const {Problem } = require('../models')
 
 class problemRepository{
@@ -35,6 +37,21 @@ class problemRepository{
             throw error
         }
     }
+
+    async deleteProblem(id){
+        try {
+            const deleteproblem = await Problem.findByIdAndDelete(id);
+            if(!deleteproblem){
+                throw new NotFound("deleteproblem",id);
+            }
+            return deleteproblem;
+        } catch (error) {
+            throw error
+        }
+        
+
+    }
+
 }
 
 module.exports = problemRepository
