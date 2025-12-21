@@ -23,6 +23,18 @@ class problemRepository{
             throw error
         }
     }
+
+    async getProblem(id){
+        try {
+            const problem = await Problem.findById(id);
+            if(!problem){
+                        throw new NotFound("Problem",id)
+                    }
+            return problem;
+        } catch (error) {
+            throw error
+        }
+    }
 }
 
 module.exports = problemRepository

@@ -26,8 +26,16 @@ class ProblemService{
         } catch (error) {
             throw error
         }
-        
 
+    }
+
+    async getProblem(problemId){
+        try {
+            const problem = await this.problemRepository.getProblem(problemId);
+            return problem;
+        } catch (error) {
+            throw error;
+        }
     }
 }
 
