@@ -1,5 +1,5 @@
 const {Problem } = require('../models')
-const { create } = require('../models/problem.model')
+
 class problemRepository{
     async createProblem(problemData){
         try {
@@ -13,6 +13,15 @@ class problemRepository{
             throw  error
         }
         
+    }
+
+    async getAllProblems(){
+        try {
+            const problems = await Problem.find({});
+            return problems
+        } catch (error) {
+            throw error
+        }
     }
 }
 
